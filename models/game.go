@@ -27,3 +27,17 @@ type RemoveGameRequest struct {
 }
 
 //Response
+type GetGameResponse struct {
+	Name       string
+	Plataform  string
+	Status     string
+	Percentage string
+}
+
+type AddGameResponse struct {
+	Message string
+}
+
+type RemoveGameResponse struct {
+	Message string
+}
