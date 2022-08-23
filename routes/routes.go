@@ -1,6 +1,9 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/Johnman67112/game_management_api/controllers"
+	"github.com/gin-gonic/gin"
+)
 
 func Handlers() {
 	//Set router
@@ -8,7 +11,7 @@ func Handlers() {
 
 	r.Group("/api/v1")
 
-	r.GET("/game")
+	r.GET("/game", controllers.GetGameRequest)
 	r.POST("/game")
 	r.DELETE("/game")
 
