@@ -1,27 +1,33 @@
 package database
 
 import (
-	"database/sql"
 	"fmt"
+	"log"
 	"os"
+
+	"github.com/Johnman67112/game_management_api/models"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
-func Conect() *sql.DB {
-	//Get envs setted on main
-	user := os.Getenv("USER")
-	dbase := os.Getenv("DBNAME")
-	pass := os.Getenv("PASSWORD")
-	host := os.Getenv("HOST")
-	ssl := os.Getenv("SSLMODE")
+var (
+	DB  *gorm.DB
+	err error
+)
 
-	//Build conn string
-	conn := fmt.Sprintf("user=%s dbname=%s password=%s host=%s sslmode=%s", user, dbase, pass, host, ssl)
+func Connect() {
+	host := os.Getenv("DB_HOST")
+	user := os.Getenv("DB_USER")
+	password := os.Getenv("DB_PASS")
+	dbname := os.Getenv("DB_NAME")
+	dbport := os.Getenv("DB_PORT")
+	ssl := os.Getenv("SSL")
 
-	//Connect database
-	db, err := sql.Open(user, conn)
+	conn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s", host, user, password, dbname, dbport, ssl)
+	DB, err = gorm.Open(postgres.Open(conn))
 	if err != nil {
-		panic(err.Error())
+		log.Panic("Database connection error")
 	}
 
-	return db
+	DB.AutoMigrate(&models.Game{})
 }

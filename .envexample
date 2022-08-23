@@ -1,10 +1,10 @@
-#Postgres
-DBPORT=":5432"
-USER=postgres
-DBNAME=
-PASSWORD=
-HOST=localhost
-SSLMODE=disable
+DB_HOST="localhost"
+DB_USER="root"
+DB_PASS="root"
+DB_NAME="root"
+DB_PORT=5432
+SSL="disable"
 
-#App Port
-PORT=":8000"
+PGADMIN_MAIL="admin@mail.com"
+PGADMIN_PASS="secret"
+PGADMIN_PORT=54321
