@@ -1,5 +1,13 @@
 package main
 
-func main() {
+import (
+	"github.com/Johnman67112/game_management_api/database"
+	"github.com/Johnman67112/game_management_api/routes"
+	"github.com/joho/godotenv"
+)
 
+func main() {
+	godotenv.Load(".env")
+	database.Connect()
+	routes.Handlers()
 }
