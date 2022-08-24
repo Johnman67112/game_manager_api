@@ -52,6 +52,28 @@ func AddGame(c *gin.Context) {
 	c.JSON(http.StatusOK, "Game Created Sucessfully")
 }
 
+func UpdateGameState(c *gin.Context) {
+	var game, gameDB models.Game
+
+	if err := c.ShouldBindJSON(&game); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error()})
+		return
+	}
+
+	database.DB.Where(&models.Game{Name: game.Name, Plataform: game.Plataform}).First(&gameDB)
+
+	if gameDB.ID == 0 {
+		c.JSON(http.StatusConflict, gin.H{
+			"Not found": "Game not found"})
+		return
+	}
+
+	database.DB.Model(&gameDB).UpdateColumns(&game)
+
+	c.JSON(http.StatusOK, "Game State Updated Sucessfully")
+}
+
 func RemoveGame(c *gin.Context) {
 	var game models.Game
 

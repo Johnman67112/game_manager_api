@@ -16,6 +16,8 @@ func Handlers() {
 
 	r.POST("/games", controllers.AddGame)
 
+	r.PATCH("/games", controllers.UpdateGameState)
+
 	r.DELETE("/games/:name/:plataform", controllers.RemoveGame)
 
 	//Run
