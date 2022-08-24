@@ -9,11 +9,14 @@ func Handlers() {
 	//Set router
 	r := gin.Default()
 
-	r.Group("/api/v1")
-
+	//Games
 	r.GET("/games/:name/:plataform", controllers.GetGame)
+
+	r.GET("/games", controllers.GetGames)
+
 	r.POST("/games", controllers.AddGame)
-	r.DELETE("/games")
+
+	r.DELETE("/games/:name/:plataform", controllers.RemoveGame)
 
 	//Run
 	r.Run()
