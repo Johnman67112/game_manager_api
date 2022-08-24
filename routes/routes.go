@@ -11,8 +11,8 @@ func Handlers() {
 
 	r.Group("/api/v1")
 
-	r.GET("/games", controllers.GetGame)
-	r.POST("/games")
+	r.GET("/games/:name/:plataform", controllers.GetGame)
+	r.POST("/games", controllers.AddGame)
 	r.DELETE("/games")
 
 	//Run
