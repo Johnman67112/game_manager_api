@@ -6,7 +6,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-//Version: 0.1
+//Version: 0.2
 
 func main() {
 	godotenv.Load(".env")

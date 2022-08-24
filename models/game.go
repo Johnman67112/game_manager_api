@@ -1,9 +1,12 @@
 package models
 
+import "gorm.io/gorm"
+
 //DB model
 type Game struct {
-	Name       string
-	Plataform  string
-	Status     string
-	Percentage string
+	gorm.Model
+	Name       string `json:"name"`
+	Plataform  string `json:"plataform"`
+	Status     string `json:"status"`
+	Percentage string `json:"percentage"`
 }
