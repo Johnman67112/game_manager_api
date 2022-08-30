@@ -27,31 +27,6 @@ info:
   contact: {}
 paths:
   /games:
-    delete:
-      consumes:
-      - application/json
-      description: With params Name, Plataform, Status, Percentage removes a new game
-      parameters:
-      - description: Game Model
-        in: body
-        name: game
-        required: true
-        schema:
-          $ref: '#/definitions/models.Game'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/models.Game'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/httputil.HTTPError'
-      summary: Removes a new game on database
-      tags:
-      - Games
     get:
       consumes:
       - application/json
@@ -131,7 +106,25 @@ paths:
       summary: Adds a new game on database
       tags:
       - Games
-  /games/:name/:plataform:
+  /games/{name}/{plataform}:
+    delete:
+      consumes:
+      - application/json
+      description: With params Name, Plataform, Status, Percentage removes a new game
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      summary: Removes a new game on database
+      tags:
+      - Games
     get:
       consumes:
       - application/json

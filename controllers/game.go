@@ -19,7 +19,7 @@ import (
 // @Produce      json
 // @Success      200  {object}  models.Game
 // @Failure      404  {object}  httputil.HTTPError
-// @Router       /games/:name/:plataform [get]
+// @Router       /games/{name}/{plataform} [get]
 func GetGame(c *gin.Context) {
 	var game models.Game
 	name := c.Param("name")
@@ -133,10 +133,9 @@ func UpdateGameState(c *gin.Context) {
 // @Tags         Games
 // @Accept       json
 // @Produce      json
-// @Param        game  body  models.Game  true  "Game Model"
-// @Success      200  {object}  models.Game
+// @Success      200  {object}  string
 // @Failure      404  {object}  httputil.HTTPError
-// @Router       /games [delete]
+// @Router       /games/{name}/{plataform} [delete]
 func RemoveGame(c *gin.Context) {
 	var game models.Game
 

@@ -79,44 +79,6 @@
                     }
                 }
             },
-            "delete": {
-                "description": "With params Name, Plataform, Status, Percentage removes a new game",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "Games"
-                ],
-                "summary": "Removes a new game on database",
-                "parameters": [
-                    {
-                        "description": "Game Model",
-                        "name": "game",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/models.Game"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/models.Game"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/httputil.HTTPError"
-                        }
-                    }
-                }
-            },
             "patch": {
                 "description": "With params Name Plataform, Status and Percentage updates game state",
                 "consumes": [
@@ -162,7 +124,7 @@
                 }
             }
         },
-        "/games/:name/:plataform": {
+        "/games/{name}/{plataform}": {
             "get": {
                 "description": "Route to show a game with params name and plataform",
                 "consumes": [
@@ -180,6 +142,33 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/models.Game"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httputil.HTTPError"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "With params Name, Plataform, Status, Percentage removes a new game",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Games"
+                ],
+                "summary": "Removes a new game on database",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
                         }
                     },
                     "404": {

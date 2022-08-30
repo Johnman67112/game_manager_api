@@ -19,3 +19,13 @@ CODENAME: Cassino
     ``` go
     go run main.go run
     ```
+
+## Documents
+
+Docs:
+
+- github.com/Johnman67112/game_management_api/tree/main/docs
+
+Thunder-Client:
+
+- github.com/Johnman67112/game_management_api/tree/main/docs/thunder-client
