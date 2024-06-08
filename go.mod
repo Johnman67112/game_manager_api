@@ -1,6 +1,6 @@
 module github.com/Johnman67112/game_management_api
 
-// +heroku goVersion go.18
+// +heroku goVersion go.20
 go 1.20
 
 require (
